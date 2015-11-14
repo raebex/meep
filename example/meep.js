@@ -1,9 +1,8 @@
 var Meep = (function($){
   'use strict';
 
-  // initialize client with app credentials
   SC.initialize({
-    client_id: '{your client id}'
+    client_id: '{83ecf5e2db8876a9daf84855c40b931c}'
   });
 
   var $sound_list;
@@ -11,7 +10,6 @@ var Meep = (function($){
   var _embed_template;
   var $search_bar;
   var $search_button;
-
   var current;
 
   var result = 'pizza';
@@ -19,9 +17,7 @@ var Meep = (function($){
   var _setup_event_listener = function(){
     $sound_list.on('click', '.add', function(e){
       e.preventDefault();
-
       $playlist.append($(this).parent().parent());
-
       $(this).text('Delete');     
     });
 
@@ -64,26 +60,26 @@ var Meep = (function($){
   };
 
   return {
+    //objects
     init: function(config){
       _embed_template = $('#embed-template');
-            $sound_list = config.sound_list;
-            $playlist = config.playlist;
-            $search_bar = config.search_bar;
-            $search_button = config.search_button;
+        $sound_list = config.sound_list;
+        $playlist = config.playlist;
+        $search_bar = config.search_bar;
+        $search_button = config.search_button;
 
-        Meep.list_tracks();
-        _setup_event_listener();
+      Meep.list_tracks();
+      _setup_event_listener();
 
     },
 
     list_tracks: function(track){
       SC.get('/tracks', { q: result }, function(tracks){
-        
         $(tracks).each(function(index, track) {
           var embed_template = _.template(_embed_template.html());
           var embed_values;
           var embed_markup;
-            
+           
           embed_values = {
             title: track.title,
             image: track.artwork_url,
@@ -99,9 +95,7 @@ var Meep = (function($){
 
     play_track: function(track){
       current.parent().parent().addClass('now-playing');
-
       var playNextSound = current.next().attr('id');
-
       SC.stream('/tracks/' + current.attr('id'), function(sound){
         sound.start();
       });     
