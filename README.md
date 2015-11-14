@@ -54,10 +54,6 @@ var meep_config = {
 };
 ```
 
-###The meep playlist is now incorporated into your project!
-
-The following code snippets are optional, but will help you out with styling and such.
-
 6) Right now, the default search keyword for the listed tracks is 'pizza.' To change or delete this, go to line 23 in meep.js and delete or modify the result variable:
 ```
 //default
