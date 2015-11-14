@@ -17,45 +17,41 @@ Search from SoundCloud's massive collection of sounds and compile them into a cu
 2) The HTML structure is up to you, as long as you have tags for a search bar, search button, and two list tags: one for SoundCloud's tracks, and one for the custom playlist. The ids are also up to you. For example: 
 ```
 <html>
-    <head></head>
-    <body>
-        <input type="text" id="search-bar">
-        <button type="submit" id="search-button">Search</button>
-        <ul id="sound-list"></ul>
-        <ul id="playlist"></ul>
+  <head></head>
+  <body>
+    <input type="text" id="search-bar">
+    <button type="submit" id="search-button">Search</button>
+    <ul id="sound-list"></ul>
+    <ul id="playlist"></ul>
+  </body>
 </html>
 ```
 
 3) Copy past this underscore template above the rest of the script tags:
 ```
 <script type="text/template" id="embed-template">
-  	<li class="track">
-    		<img src="<%=image%>"/>
-    		<div>
-      		  <%=title%>
-      			<a href="#" id="<%=id%>" class="play">Play</a>
-      			<a href="#" id="<%=id%>" class="stop">Stop</a>
-      			<a href="#" class="add">Add</a>
-    		</div>
-	</li>
+  <li class="track">
+    <img src="<%=image%>"/>
+    <div>
+      <%=title%>
+      <a href="#" id="<%=id%>" class="play">Play</a>
+      <a href="#" id="<%=id%>" class="stop">Stop</a>
+      <a href="#" class="add">Add</a>
+    </div>
+  </li>
 </script>
 ```
 
 4) In your custom script file, copy/paste this snippet and fill in the parameters with your own id tags from your html file. For example:
 ```
-;(function($) {
-	'use strict';
-
-	var meep_config = {
-		//specify where you want videos to sit
-		embed_template: $('#embed-template'),
-		sound_list: $('#sound-list'),
-		playlist: $('#playlist'),
-		search_bar: $('#search-bar'),
-		search_button: $('#search-button')
-	};
-	
-})(window.jQuery);
+var meep_config = {
+  //specify where you want videos to sit
+  embed_template: $('#embed-template'),
+  sound_list: $('#sound-list'),
+  playlist: $('#playlist'),
+  search_bar: $('#search-bar'),
+  search_button: $('#search-button')
+};
 ```
 
 ###The meep playlist is now incorporated into your project!
@@ -73,32 +69,3 @@ var result = '';
 //or, set your own default:
 var result = 'rock';
 ```
-
-7) To get the sound list and playlist displaying side by side:
-```
-<style>
-
-    #playlist, #sound-list {
-        height: 500px;
-        width: 50%;
-        float: left;
-        padding-left: 0;
-        list-style-type: none;
-    }
-    
-</style>
-```
-
-8) To have styles show up when the track is playing: 
-```
-<style>
-
-    .track {
-        transition: 1s background-color ease;
-    }
-
-    .track.now-playing {
-      	background-color: #CCE547;
-    }
-    
-</style>
