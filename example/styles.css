@@ -122,13 +122,13 @@ button, input {
 input[type=text] {
   width: 300px;
   background: #eee;
-  color: #fff;
   padding: 10px;
 }
 
 input[type=text]:focus {
   background: #555;
   outline: none;
+  color: #fff;
 }
 
 button {
